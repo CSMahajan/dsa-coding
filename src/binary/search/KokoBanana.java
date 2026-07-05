@@ -11,8 +11,8 @@ public class KokoBanana {
 
     public static boolean isPossible(int[] piles, int k, int maxHours) {
         int hours = 0;
-        for (int i = 0; i < piles.length; i++) {
-            hours += (piles[i] + k - 1) / k;
+        for (int pile : piles) {
+            hours += (pile + k - 1) / k;
         }
         return maxHours >= hours;
     }
