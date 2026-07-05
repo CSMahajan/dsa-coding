@@ -10,17 +10,21 @@ public class FlowerBouquet {
         System.out.println(capacity);
     }
 
-    public static int findMinimumBloomDaysForBouquets(int[] bloomDays, int bouquets, int consecutives) {
-        int left = 0;
-        int right = 0;
-        for (int weight : bloomDays) {
-            right += Math.max(right, weight);
-            left = Math.min(left, weight);
+    public static int findMinimumBloomDaysForBouquets(int[] bloomDays, int bouquets, int consecutive) {
+        if ((long) bouquets * consecutive > bloomDays.length) {
+            return -1;
+        }
+        int left = Integer.MAX_VALUE;
+        int right = Integer.MIN_VALUE;
+
+        for (int bloom : bloomDays) {
+            left = Math.min(left, bloom);
+            right = Math.max(right, bloom);
         }
         int minCapacity = right;
         while (left <= right) {
             int mid = left + (right - left) / 2;
-            if (isPossible(bloomDays, mid, bouquets, consecutives)) {
+            if (isPossible(bloomDays, mid, bouquets, consecutive)) {
                 minCapacity = mid;
                 right = mid - 1;
             } else {
