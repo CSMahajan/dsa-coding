@@ -32,12 +32,12 @@ public class ShipPackageCapacity {
     public static boolean isPossible(int[] weights, int days, int capacity) {
         int currentCapacityLoaded = 0;
         int currentDays = 1;
-        for (int i = 0; i < weights.length; i++) {
-            if (weights[i] + currentCapacityLoaded <= capacity) {
-                currentCapacityLoaded += weights[i];
+        for (int weight : weights) {
+            if (weight + currentCapacityLoaded <= capacity) {
+                currentCapacityLoaded += weight;
             } else {
                 currentDays++;
-                currentCapacityLoaded = weights[i];
+                currentCapacityLoaded = weight;
             }
         }
         return currentDays <= days;
