@@ -37,8 +37,8 @@ public class FlowerBouquet {
     public static boolean isPossible(int[] bloomDay, int day, int m, int k) {
         int consecutiveFlowers = 0;
         int bouquetsMade = 0;
-        for (int i = 0; i < bloomDay.length; i++) {
-            if (day >= bloomDay[i]) {
+        for (int currentFlowerBloomDay : bloomDay) {
+            if (day >= currentFlowerBloomDay) {
                 consecutiveFlowers++;
                 if (consecutiveFlowers == k) {
                     bouquetsMade++;
